@@ -128,7 +128,7 @@ const Courses = () => {
                                 <span className=" flex gap-1 items-center font-bold"><FaRupeeSign />{course?.price}</span>
                                 <span className=" flex items-center gap-2 font-bold"> <ImTree /> {course?.section?.length}  Sections</span>
                             </div>
-                            {course?.user?.some(us => user._id === us?.user) ?
+                            {course?.user?.some(us => user?._id === us?.user) ?
                                 <button onClick={changeRoute} className=' p-4 w-full bg-purple-600 text-lg font-bold text-white capitalize rounded-md'>start learning</button>
                                 : <button onClick={handleEnroll} className=' p-4 w-full bg-purple-600 text-lg font-bold text-white capitalize rounded-md'>enroll</button>}
                         </div>
