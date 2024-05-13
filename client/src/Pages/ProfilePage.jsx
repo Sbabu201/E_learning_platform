@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import CourseCard from '../cards/CourseCard'
 import { useParams } from 'react-router-dom'
 import CertificateCard from '../cards/CertificateCard'
+import { url } from '../Utilities/serverUrl'
 
 const ProfilePage = () => {
     const user = JSON.parse(localStorage.getItem("user"))
@@ -21,7 +22,7 @@ const ProfilePage = () => {
         setLoading(true)
         try {
 
-            const { data } = await axios.get(`http://localhost:8080/user/userdetails/${user?._id}`)
+            const { data } = await axios.get(`${url}/user/userdetails/${user?._id}`)
             // setCourse(data?.course)
             setDetails(data?.info)
         } catch (error) {

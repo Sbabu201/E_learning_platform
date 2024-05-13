@@ -6,6 +6,7 @@ import { HiOutlineMinusSm } from "react-icons/hi";
 import { LuPlus } from "react-icons/lu";
 import { PiVideo } from "react-icons/pi";
 import Loader from '../Utilities/Loader';
+import { url } from '../Utilities/serverUrl';
 const SectionVideo = () => {
     const navigate = useNavigate()
     const { id } = useParams()
@@ -23,7 +24,7 @@ const SectionVideo = () => {
     const getCourseDetails = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get(`http://localhost:8080/course/course/${id}`)
+            const { data } = await axios.get(`${url}/course/course/${id}`)
             setCourse(data?.course)
         } catch (error) {
             console.log('error', error)

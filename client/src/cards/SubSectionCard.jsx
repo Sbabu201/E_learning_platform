@@ -4,7 +4,6 @@ import logo from "../assets/logof.png"
 const SearchCard = ({ visible, onClose, user, quizzes, calculatedPercentage }) => {
     const navigate = useNavigate()
     if (!visible) return null;
-    console.log('quizzes', quizzes)
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose();
     };

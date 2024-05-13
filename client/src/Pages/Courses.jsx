@@ -8,6 +8,7 @@ import { LuPlus } from "react-icons/lu";
 import { PiVideo } from "react-icons/pi";
 import toast from 'react-hot-toast';
 import Loader from '../Utilities/Loader';
+import { url } from '../Utilities/serverUrl';
 const Courses = () => {
     const { id } = useParams()
 
@@ -34,7 +35,7 @@ const Courses = () => {
         setLoading(true)
         try {
 
-            const { data } = await axios.get(`http://localhost:8080/course/course/${id}`)
+            const { data } = await axios.get(`${url}/course/course/${id}`)
             setCourse(data?.course)
             console.log('data', data)
         } catch (error) {
@@ -47,7 +48,7 @@ const Courses = () => {
     }
     const handleEnroll = async () => {
         try {
-            const { data } = await axios.put(`http://localhost:8080/course/enroll`, {
+            const { data } = await axios.put(`${url}/course/enroll`, {
                 userId: user?._id,
                 courseId: course?._id
             })

@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import toast from "react-hot-toast";
+import { url } from "../Utilities/serverUrl";
 
 
 export const getAllCourses = createAsyncThunk(
     'post/getAllCourses',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`http://localhost:8080/course/getAllcourse`);
+            const response = await axios.get(`${url}/course/getAllcourse`);
             // console.log('response', response)
             return response.data;
         } catch (error) {

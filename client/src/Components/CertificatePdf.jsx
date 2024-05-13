@@ -24,7 +24,6 @@ const CertificatePdf = ({ visible, onClose, user, mark, date, course }) => {
             pdf.save(`${course?._id}.pdf`);
         });
     };
-    console.log('course', course)
     const navigate = useNavigate()
     if (!visible) return null;
     const handleOnClose = (e) => {
@@ -33,7 +32,7 @@ const CertificatePdf = ({ visible, onClose, user, mark, date, course }) => {
 
     return (
         <div
-            ref={componentRef}
+
             id="container"
             onClick={handleOnClose}
             className="fixed inset-0 bg-black bg-opacity-30 flex-col z-10 backdrop-blur-sm flex justify-center items-center"

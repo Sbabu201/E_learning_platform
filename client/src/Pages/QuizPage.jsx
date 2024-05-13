@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useParams } from 'react-router-dom'
 import MyModal from "../cards/CourseDetailsCard"
+import { url } from '../Utilities/serverUrl'
 const QuizPage = () => {
     const [quizzes, setQuizzes] = useState([])
     const user = JSON.parse(localStorage.getItem("user"))
@@ -18,7 +19,7 @@ const QuizPage = () => {
         const getQuizzes = async () => {
             setLoading(true)
             try {
-                const { data } = await axios.get(`http://localhost:8080/course/quiz/${id}`)
+                const { data } = await axios.get(`${url}/course/quiz/${id}`)
                 setQuizzes(data?.quiz)
             } catch (error) {
                 console.log('error', error)
@@ -44,7 +45,7 @@ const QuizPage = () => {
         setCalculated(Number(calculateMark) * 100 / quizzes?.length)
         if (Math.floor(Number(calculateMark) * 100 / quizzes?.length) > 40) {
             try {
-                const { data } = await axios.put("http://localhost:8080/user/updatecourse", {
+                const { data } = await axios.put(`${url}/user/updatecourse`, {
                     mark: Number(calculateMark) * 100 / quizzes?.length,
                     user: user?._id,
                     courseId: quizzes?.[0]?.course?._id

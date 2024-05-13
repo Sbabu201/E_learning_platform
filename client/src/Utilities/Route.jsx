@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from '../Pages/HomePage'
@@ -10,6 +10,7 @@ import SectionVideo from '../Pages/SectionVideo'
 import ProfilePage from '../Pages/ProfilePage'
 import QuizPage from '../Pages/QuizPage'
 import CertificatePdf from '../Components/CertificatePdf'
+import SideBar from '../Components/SideBar'
 
 const Route = () => {
 
@@ -17,9 +18,10 @@ const Route = () => {
     const Layout = () => {
         return (
             <div className='flex flex-col h-screen overflow-hidden justify-evenly'>
-                <div className=' w-full md:flex hidden h-[10%] '>
+                <div className=' w-full flex   h-[10%] '>
                     <NavBar />
                 </div>
+
                 <div className='w-full h-[90%] '>
                     <Outlet />
                 </div>

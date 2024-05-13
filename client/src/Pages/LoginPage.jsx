@@ -3,6 +3,7 @@ import login from "../assets/login.jpg"
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { url } from '../Utilities/serverUrl'
 const LoginPage = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post("http://localhost:8080/user/login", formData)
+            const { data } = await axios.post(`${url}/user/login`, formData)
             if (data?.success) {
                 localStorage.setItem("token", data?.accessToken)
                 localStorage.setItem("user", JSON.stringify(data?.info))
