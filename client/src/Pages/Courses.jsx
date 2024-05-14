@@ -9,10 +9,10 @@ import { PiVideo } from "react-icons/pi";
 import toast from 'react-hot-toast';
 import Loader from '../Utilities/Loader';
 import { url } from '../Utilities/serverUrl';
+import { useSelector } from 'react-redux';
 const Courses = () => {
     const { id } = useParams()
-
-    const user = JSON.parse(localStorage.getItem("user"))
+    const user = JSON.parse(localStorage.getItem("user"));
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 
@@ -47,6 +47,10 @@ const Courses = () => {
         navigate(`/course/section/${id}`)
     }
     const handleEnroll = async () => {
+        if (!user) {
+            toast.error("you have not logged in yet")
+            return
+        }
         try {
             const { data } = await axios.put(`${url}/course/enroll`, {
                 userId: user?._id,
@@ -72,33 +76,33 @@ const Courses = () => {
     }
 
     return (
-        <div className='w-full flex h-screen overflow-y-scroll pb-10'>
-            <div className='w-[60%] flex justify-center pl-16   flex-col overflow-y-scroll   h-[90%]'>
-                <div className=' w-[90%] h-[50%]  flex flex-col gap-4 '>
+        <div className='w-full flex flex-col md:flex-row h-full md:h-screen overflow-y-scroll md:pb-10'>
+            <div className='md:w-[60%] w-full flex justify-between  md:pl-16 p-4   pt-10 flex-col  md:overflow-y-scroll h-fit  md:h-[90%]'>
+                <div className=' w-[90%] h-[30%] md:h-[50%]  flex flex-col gap-4 '>
 
-                    <span className=' text-[50px] font-bold'>{course?.name}</span>
-                    <span className=' text-xl font-semibold'>{course?.descrption}</span>
+                    <span className=' text-xl md:text-[50px] font-bold'>{course?.name}</span>
+                    <span className=' text-sm md:text-xl font-semibold'>{course?.descrption}</span>
                     <span>created At : {date}</span>
                 </div>
-                <div className=' flex gap-2 w-full flex-col h-[50%] cursor-pointer   '>
+                <div className=' flex gap-2 w-full flex-col h-[70%]  md:justify-start justify-end md:h-[50%] cursor-pointer   '>
                     <div className=' flex justify-between border border-gray-900 p-2'>
-                        <span className=' text-xl font-bold'>Curriculum for this course :</span>
-                        <span>{totalSections} Lessons</span>
+                        <span className=' text-sm md:text-[18px] font-bold'>Curriculum for this course :</span>
+                        <span className=' text-sm md:text-base'>{totalSections} Lessons</span>
                     </div>
                     {
                         course?.section?.map((sub, index) => (
                             <div className=' flex flex-col gap-2' key={index}>
                                 <div className='flex justify-between border font-bold border-gray-900 p-2 shadow-md' onClick={() => toggleDetails(index)}>
-                                    <span className=' flex gap-1 items-center'> {!showDetails[index] ? <LuPlus /> : <HiOutlineMinusSm />} {sub?.sectionName
+                                    <span className=' flex gap-1 text-sm md:text-[18px] items-center'> {!showDetails[index] ? <LuPlus /> : <HiOutlineMinusSm />} {sub?.sectionName
                                     }</span>
-                                    <span>{sub?.subSection?.length} Lessons</span>
+                                    <span className=' text-sm md:text-base'>{sub?.subSection?.length} Lessons</span>
                                 </div>
                                 <div className={showDetails[index] ? ' flex flex-col gap-2' : 'hidden'}>
                                     {
                                         sub?.subSection?.map((item, index) => (
                                             <div className='flex justify-between border  text-sm text-cyan-600 font-semibold border-gray-900 p-2 shadow-md'>
-                                                <span className=' flex items-center gap-1'><PiVideo /> {item?.title}</span>
-                                                <span>{item?.timeDuration
+                                                <span className='text-sm md:text-[17px] flex items-center gap-1'><PiVideo /> {item?.title}</span>
+                                                <span className=' text-sm md:text-base'>{item?.timeDuration
                                                 }</span>
                                             </div>
                                         ))
@@ -110,9 +114,9 @@ const Courses = () => {
                     }
                 </div>
             </div>
-            <div className=' w-[40%] h-[70%] flex justify-center '>
+            <div className=' md:w-[40%] w-full h-full pt-10 md:pt-0 md:h-[70%] flex justify-center '>
                 <div
-                    className={`not-selectable w-[60%]  relative rounded-[10px] overflow-hidden shadow-xl border border-gray-300 md:m-4 border-1    text-black   transition-transform duration-300 `}
+                    className={` w-[90%] md:w-[60%]   rounded-[10px] overflow-hidden shadow-xl border border-gray-300 md:m-4 border-1    text-black   duration-300 `}
                 >
                     <div
                         className={`transform ${""

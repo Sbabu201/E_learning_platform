@@ -26,15 +26,15 @@ const CertificateCard = ({ course, mark }) => {
                     className={` h-72 `}
                 >
                     <img className="w-full h-[60%] hover:scale-105 duration-300 ease-in-out object-cover" draggable='false' src={course?.thumbnail} alt="Thumbnail" />
-                    <div className="px-6 pt-4">
-                        <div className="font-bold text-base mb-2"> Course Name : <span className=" text-sm text-gray-600">{course?.type}</span></div>
-                        <div className="font-bold text-sm mb-2"> Certificate Id : <span className=" text-sm text-gray-600">{course?._id}</span></div>
-                        <div className="font-bold text-sm mb-2"> issued On : <span className=" text-sm text-gray-600">{date}</span></div>
+                    <div className="px-6 pt-4 w-full">
+                        <div className="font-bold  mb-2 text-xs md:text-base "> Course Name : <span className=" text-xs md:text-base text-gray-600">{course?.type}</span></div>
+                        <div className="font-bold text-xs md:text-base mb-2"> Certificate Id : <span className=" text-[10px] md:text-base text-gray-600">{course?._id}</span></div>
+                        <div className="font-bold text-xs md:text-base mb-2"> issued On : <span className=" text-xs md:text-base text-gray-600">{date}</span></div>
 
                     </div>
                 </div>
                 <div onClick={() => { setOpen(true) }} className=" flex justify-center py-2 px-4 border-t bg-green-200 hover:scale-105 duration-300 ease-in-out hover:bg-green-400 hover:text-white cursor-pointer border-gray-400">
-                    <span className=" flex items-center gap-2 font-bold"> <MdDownloadForOffline />  Download</span>
+                    <span className=" flex items-center gap-2 text-xs md:text-base font-bold"> <MdDownloadForOffline />  Download</span>
                 </div>
             </div>
         </>

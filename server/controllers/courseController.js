@@ -178,7 +178,7 @@ exports.enrollCourseController = async (req, res) => {
     try {
         // console.log('req.body', req.body)
         const { userId, courseId } = req.body;
-
+console.log('userId ,courseId', userId ,courseId)
         if (!userId || !courseId) {
             return res.status(400).send({
                 success: false,

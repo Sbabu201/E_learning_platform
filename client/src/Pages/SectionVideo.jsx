@@ -48,19 +48,19 @@ const SectionVideo = () => {
     }
 
     return (
-        <div className='w-full h-screen flex'>
-            <div className=' w-[60%] h-full flex justify-center '>
+        <div className='w-full h-screen flex flex-col md:flex-row'>
+            <div className=' iframe-container w-full  '>
                 <iframe className='video'
                     title='Youtube player'
                     sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
                     src={`https://youtube.com/embed/${(video?.videoUrl?.split('/').pop().split('?')[0])}?autoplay=0`}
-                    width="920"
+                    
                     allowfullscreen
-                    height="500">
+                    >
                 </iframe>
             </div>
-            <div className=' w-[40%] h-full p-6 '>
-                <div className=' flex gap-2 w-full flex-col h-full   '>
+            <div className=' w-full md:w-[40%] h-[50%] p-6 '>
+                <div className=' flex gap-2 w-full flex-col h-full  overflow-y-scroll  '>
                     <div className=' flex justify-between border-[1px] border-gray-500 p-2'>
                         <span className=' text-xl font-bold'>Curriculum for this course :</span>
                         <span>{totalSections} Lessons</span>

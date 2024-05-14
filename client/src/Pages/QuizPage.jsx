@@ -14,6 +14,8 @@ const QuizPage = () => {
     const [start, setStart] = useState(false)
     const { id } = useParams()
     const [answer, setAnswer] = useState({})
+    console.log('answer', answer[currentQuizIndex])
+    console.log('currentQuizIndex', currentQuizIndex)
     const [ansarr, setAns] = useState([])
     useEffect(() => {
         const getQuizzes = async () => {
@@ -85,7 +87,7 @@ const QuizPage = () => {
     const currentQuiz = quizzes[currentQuizIndex]
     console.log('currentQuiz', currentQuiz)
     return (
-        <div className='w-full h-screen flex justify-center'>
+        <div className='w-full h-screen p-4 flex justify-center'>
             <MyModal visible={modelOpen} user={user} quizzes={quizzes} calculatedPercentage={calculatedPercentage} onClose={() => setModealOpen(false)} />
             {!start && currentQuiz ? (
                 <div className='w-[50%] flex flex-col gap-2 justify-center items-center h-[50%]'>
@@ -94,13 +96,14 @@ const QuizPage = () => {
                     <button onClick={() => setStart(true)} className='px-6 py-2 text-white bg-cyan-500 font-bold rounded-sm' type="button">Start Quiz</button>
                 </div>
             ) : (
-                <div className='w-[50%] flex flex-col gap-2 border border-gray-900 mt-20 justify-center items-center h-[50%]'>
-                    <span>Question {currentQuizIndex + 1}: {currentQuiz?.name}</span>
+                <div className=' w-full md:w-[50%] flex flex-col gap-2 border border-gray-900 mt-20 justify-center items-center h-fit p-4 md:h-[50%]'>
+                    <span className=' text-sm md:text-base'>Question {currentQuizIndex + 1}: {currentQuiz?.name}</span>
 
-                    <div key={currentQuiz?._id} className='flex  flex-col h-60 w-full border-b border-gray-900'>
+                    <div key={currentQuiz?._id} className='flex  flex-col h-fit text-xs md:text-base md:h-60 w-full '>
                         {currentQuiz?.options.map((option, index) => (
                             <div key={index} className=' w-full flex gap-2 border items-center p-4  justify-start '>
-                                <input type='radio' onChange={(e) => handleChange(e, (option?.option))} name={currentQuizIndex} key={index} className='h-4 border-t flex items-center p-2 w-20 border-gray-900' value={option?.option} />
+                               
+                                <input type='radio' onChange={(e) => handleChange(e, (option?.option))} name={currentQuizIndex} key={index} checked={answer[currentQuizIndex]===option?.option}  className='h-4 border-t flex items-center p-2 w-20 border-gray-900' value={option?.option} />
 
                                 <span className=''>{option?.option}</span>
                             </div>
@@ -108,9 +111,9 @@ const QuizPage = () => {
                     </div>
 
                     <div className='flex gap-4'>
-                        <button onClick={handlePrevious} disabled={currentQuizIndex === 0} className='px-4 py-2 text-white bg-gray-500 font-bold rounded-sm' type="button">Previous</button>
+                        <button onClick={handlePrevious} disabled={currentQuizIndex === 0} className='px-4 py-2 text-white text-sm md:text-base bg-gray-500 font-bold rounded-sm' type="button">Previous</button>
                         {currentQuizIndex === quizzes.length - 1 ? <button onClick={handleSubmit} className='px-4 py-2 text-white bg-red-500 font-bold rounded-sm'>submit</button>
-                            : <button onClick={handleNext} disabled={currentQuizIndex === quizzes.length - 1} className='px-4 py-2 text-white bg-cyan-500 font-bold rounded-sm' type="button">Next</button>}
+                            : <button onClick={handleNext} disabled={currentQuizIndex === quizzes.length - 1} className='px-4 py-2 text-sm md:text-base text-white bg-cyan-500 font-bold rounded-sm' type="button">Next</button>}
                     </div>
                 </div>
             )}
