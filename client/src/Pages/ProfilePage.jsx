@@ -49,7 +49,7 @@ if(loading){
 }
 
     return (
-        <div className='w-full h-screen overflow-y-scroll '>
+        <div className='w-full h-screen pb-10 overflow-y-scroll '>
             <div className=' bg-cyan-500 w-full h-40 flex items-center justify-center'>
                 <span className=' font-bold text-xl md:text-4xl text-white'>{details?.name}</span>
             </div>

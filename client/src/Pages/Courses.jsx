@@ -81,7 +81,7 @@ const Courses = () => {
     }
 
     return (
-        <div className='w-full flex flex-col md:flex-row h-full md:h-screen overflow-y-scroll md:pb-10'>
+        <div className='w-full flex flex-col md:flex-row h-full md:h-screen overflow-y-scroll pb-10'>
             <div className='md:w-[60%] w-full flex justify-between  md:pl-16 p-4   pt-10 flex-col  md:overflow-y-scroll h-fit  md:h-[90%]'>
                 <div className=' w-[90%] h-[30%] md:h-[50%]  flex flex-col gap-4 '>
 

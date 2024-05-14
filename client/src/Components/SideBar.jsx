@@ -28,12 +28,17 @@ export default function SideBar({ open, handleClose }) {
                 {" "}
                 <span className=" p-2 w-full h-fit flex  gap-2 items-center ">
                   {" "}
-                  hello {user?.name}{" "}
+                  hello {user?.name?.slice(0,10)}{" "}
                 </span>
-                <span className=" px-2 w-full h-fit flex  gap-2 justify-between items-center ">
+                <span onClick={()=>{ handleClose();  navigate("/profile/1")}} className="  w-full h-fit flex px-4 py-1 rounded-md  bg-cyan-400 border border-cyan-800 text-white  gap-2 justify-between items-center ">
                   {" "}
                   view Profile
-                  <IoLogOut />{" "}
+                  <IoLogOut className=" text-red-500 text-sm md:text-base" />{" "}
+                </span>
+                <span onClick={()=>{ handleClose();  navigate("/admindashboard/0")}} className="  w-full h-fit flex px-4 py-1 rounded-md  bg-cyan-400 border border-cyan-800 text-white  gap-2 justify-between items-center ">
+                  {" "}
+                  view Admin Panel
+                 
                 </span>
               </>
             )}

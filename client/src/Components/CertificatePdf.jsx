@@ -35,37 +35,37 @@ const CertificatePdf = ({ visible, onClose, user, mark, date, course }) => {
 
             id="container"
             onClick={handleOnClose}
-            className="fixed inset-0 bg-black bg-opacity-30 flex-col z-10 backdrop-blur-sm flex justify-center items-center"
+            className="fixed inset-0 bg-black bg-opacity-30 flex-col z-10 text-xs md:text-base backdrop-blur-sm flex justify-center items-center"
         >
-            <div className=' flex justify-end gap-4 px-10 w-full'>
+            <div className=' flex justify-end gap-4 md:px-10 w-full'>
                 <span onClick={handleDownloadPDF} className=' border  cursor-pointer bg-green-200' ><MdFileDownload size={32} className=' text-green-500' /></span>
                 <span onClick={() => { onClose() }} className=' border  cursor-pointer bg-red-200'><IoMdCloseCircle className=' text-red-500' size={32} /></span>
             </div>
             <div ref={componentRef} className=' w-full h-[90%] border-4 border-yellow-400 bg-yellow-50'>
-                <div className=' pt-10 pb-5 mx-20 flex border-b-2 border-red-900 justify-between items-center'>
-                    <span className='pb-10'>certificate id : {course?._id}</span>
-                    <span className=' italianno-regular text-[50px] '> Certificate Of Completion</span>
-                    <span className=' pb-10'>issued on : {date}</span>
+                <div className=' pt-10 pb-5 md:mx-20 flex border-b-2 border-red-900 justify-between items-center'>
+                    <span className='md:pb-10 md:text-base text-[6px]'>certificate id : {course?._id}</span>
+                    <span className=' italianno-regular text-xs text-[50px] '> Certificate Of Completion</span>
+                    <span className=' md:pb-10 md:text-base text-[6px]'>issued on : {date}</span>
                 </div>
                 <div className=' pt-4 pb-5 mx-20 flex  justify-center items-center'>
-                    <span className=' text-[25px] '>Proudly Awarded To</span>
+                    <span className=' text-sm md:text-[25px] '>Proudly Awarded To</span>
                 </div>
-                <div className=' pt-4 pb-5 mx-20 flex  justify-center items-center'>
-                    <span className='italianno-regular text-[40px] '> {user?.name} </span>
+                <div className=' pt-4 pb-5 md:mx-20 flex  justify-center items-center'>
+                    <span className='italianno-regular text-xs  md:text-[40px] '> {user?.name} </span>
                 </div>
-                <div className=' pt-4 pb-5 mx-20 flex  justify-center items-center'>
-                    <span className='italianno-regular text-[20px]  '> For Successfully Completing The {course?.name} ,in {date} at hyscalar .co.in
+                <div className=' pt-4 pb-5 md:mx-20 flex  justify-center items-center'>
+                    <span className='italianno-regular text-[8px] md:text-[20px]  '> For Successfully Completing The {course?.name} ,in {date} at hyscalar .co.in
                     </span>
                 </div>
-                <div className=' pt-4 pb-2 mx-20 flex  justify-center items-center'>
-                    <span className='italianno-regular text-[20px] border-b'>Monalisha Panda</span>
+                <div className=' pt-4 pb-2 md:mx-20 flex   justify-center items-center'>
+                    <span className='italianno-regular text-[8px] md:text-[20px] border-b'>Monalisha Panda</span>
                 </div>
-                <div className=' pt-2 pb-5 mx-20 flex  justify-center items-center'>
-                    <span className=' text-[20px] '>HR At Hyscalar</span>
+                <div className=' pt-2 pb-5 md:mx-20 flex  justify-center items-center'>
+                    <span className=' text-[8px] md:text-[20px] '>HR At Hyscalar</span>
                 </div>
-                <div className=' pt-4 pb-5 mx-20 flex   justify-between items-center'>
-                    <img src={logo} alt="" />
-                    <img className=' w-20 h-20' src="https://imgs.search.brave.com/RYaGue90DrpQ0eOhloooYRKGxmS2U3MeGUA5_tEEGbU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9kL2QwL1FS/X2NvZGVfZm9yX21v/YmlsZV9FbmdsaXNo/X1dpa2lwZWRpYS5z/dmcvNjQwcHgtUVJf/Y29kZV9mb3JfbW9i/aWxlX0VuZ2xpc2hf/V2lraXBlZGlhLnN2/Zy5wbmc" alt="" />
+                <div className=' pt-4 pb-5 md:mx-20 flex   justify-between items-center'>
+                    <img className=' w-16 md:w-60 md:h-40 object-cover  h-10' src={logo} alt="" />
+                    <img className=' md:w-20 w-10  h-10  md:h-20' src="https://imgs.search.brave.com/RYaGue90DrpQ0eOhloooYRKGxmS2U3MeGUA5_tEEGbU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9kL2QwL1FS/X2NvZGVfZm9yX21v/YmlsZV9FbmdsaXNo/X1dpa2lwZWRpYS5z/dmcvNjQwcHgtUVJf/Y29kZV9mb3JfbW9i/aWxlX0VuZ2xpc2hf/V2lraXBlZGlhLnN2/Zy5wbmc" alt="" />
                 </div>
             </div>
         </div>
