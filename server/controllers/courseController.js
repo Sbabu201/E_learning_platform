@@ -157,7 +157,7 @@ exports.quizController = async (req, res) => {
             })
         }
 
-
+     
         const newQuiz = new quizModel({ name, course, answer, options })
         await newQuiz.save()
         res.status(201).send({

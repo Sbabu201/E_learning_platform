@@ -14,8 +14,7 @@ const QuizPage = () => {
     const [start, setStart] = useState(false)
     const { id } = useParams()
     const [answer, setAnswer] = useState({})
-    console.log('answer', answer[currentQuizIndex])
-    console.log('currentQuizIndex', currentQuizIndex)
+
     const [ansarr, setAns] = useState([])
     useEffect(() => {
         const getQuizzes = async () => {

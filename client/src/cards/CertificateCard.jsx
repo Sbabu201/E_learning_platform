@@ -28,7 +28,7 @@ const CertificateCard = ({ course, mark }) => {
                     <img className="w-full h-[60%] hover:scale-105 duration-300 ease-in-out object-cover" draggable='false' src={course?.thumbnail} alt="Thumbnail" />
                     <div className="px-6 pt-4 w-full">
                         <div className="font-bold  mb-2 text-xs md:text-base "> Course Name : <span className=" text-xs md:text-base text-gray-600">{course?.type}</span></div>
-                        <div className="font-bold text-xs md:text-base mb-2"> Certificate Id : <span className=" text-[10px] md:text-base text-gray-600">{course?._id}</span></div>
+                        <div className="font-bold text-xs md:text-sm mb-2"> Certificate Id : <span className=" text-[10px] md:text-sm text-gray-600">{course?._id}</span></div>
                         <div className="font-bold text-xs md:text-base mb-2"> issued On : <span className=" text-xs md:text-base text-gray-600">{date}</span></div>
 
                     </div>

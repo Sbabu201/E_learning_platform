@@ -5,6 +5,7 @@ import CourseCard from '../cards/CourseCard'
 import { useNavigate, useParams } from 'react-router-dom'
 import CertificateCard from '../cards/CertificateCard'
 import { url } from '../Utilities/serverUrl'
+import Loader from '../Utilities/Loader'
 
 const ProfilePage = () => {
     const user = JSON.parse(localStorage.getItem("user"))
@@ -14,7 +15,7 @@ const ProfilePage = () => {
     const [open, setOpen] = useState(0)
     const [details, setDetails] = useState({})
     const items = ["Lernings", "UserDetails", "Certificates"]
-    console.log('details', details)
+    // console.log('details', details)
     const handleOpen = (index) => {
         navigate(`/profile/${index}`)
     }
@@ -43,6 +44,10 @@ const ProfilePage = () => {
     useEffect(() => {
         getCourseDetails()
     }, [user?._id])
+if(loading){
+    return <Loader />
+}
+
     return (
         <div className='w-full h-screen overflow-y-scroll '>
             <div className=' bg-cyan-500 w-full h-40 flex items-center justify-center'>

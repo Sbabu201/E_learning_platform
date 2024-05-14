@@ -40,6 +40,8 @@ const Courses = () => {
             console.log('data', data)
         } catch (error) {
             console.log('error', error)
+            toast.error(error?.response?.data?.message)
+
         }
         setLoading(false)
     }
@@ -51,6 +53,7 @@ const Courses = () => {
             toast.error("you have not logged in yet")
             return
         }
+        setLoading(true)
         try {
             const { data } = await axios.put(`${url}/course/enroll`, {
                 userId: user?._id,
@@ -64,7 +67,9 @@ const Courses = () => {
             }
         } catch (error) {
             console.log('error', error)
+            toast.error(error?.response?.data?.message)
         }
+        setLoading(false)
     }
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 const sectionModel = require("../models/sectionModel")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
-
+const courseModel= require("../models/courseModel")
 
 
 exports.deleteSectionController = async (req, res) => {
@@ -78,7 +78,7 @@ exports.createSectionController = async (req, res) => {
         const course = await courseModel.findByIdAndUpdate(
             courseId,
             {
-                $push: { section: sectionId },
+                $push: { section: newSection?._id },
             },
             { new: true }
         );

@@ -3,11 +3,17 @@ import { Link } from "react-router-dom"
 import { FaArrowRight } from "react-icons/fa"
 import Banner from "../assets/banner.mp4"
 import ExploreCourse from './ExploreCourse'
+import Loader from "../Utilities/Loader"
+import { useSelector } from 'react-redux'
 // import CourseCard from '../cards/CourseCard'
 const HomePage = () => {
+    const status = useSelector(state => state?.course?.status)
+if(status === "loading"){
+    return <Loader/>
+}
 
     return (
-        <div className=' flex flex-col gap-4 items-center pb-20  mt-2 w-full h-full overflow-y-scroll '>
+        <div className=' flex flex-col gap-4 items-center pb-20 scroll-smooth  mt-2 w-full h-full overflow-y-scroll '>
 
 
             {/* Heading */}

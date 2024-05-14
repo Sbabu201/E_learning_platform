@@ -12,6 +12,8 @@ import QuizPage from '../Pages/QuizPage'
 import CertificatePdf from '../Components/CertificatePdf'
 import SideBar from '../Components/SideBar'
 import { useSelector } from 'react-redux'
+import CreateCourse from '../Components/CreateCourse'
+import AdminDashboard from '../Admin/AdminDashboard'
 
 const Route = () => {
 
@@ -93,6 +95,7 @@ const Route = () => {
                     path: "/certificate",
                     element: <CertificatePdf />
                 },
+                
 
                 {
                     path: "/course/section/:id/:videoid?",
@@ -108,6 +111,10 @@ const Route = () => {
                 {
                     path: "/course/section/quiz/:id",
                     element: <QuizPage />
+                },
+                {
+                    path: "/admindashboard/:id",
+                    element: <AdminDashboard />
                 },
             ]
         },
