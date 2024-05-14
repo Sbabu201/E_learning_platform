@@ -11,7 +11,9 @@ const SectionVideo = () => {
     const navigate = useNavigate()
     const { id } = useParams()
     const [course, setCourse] = useState({})
-    const [video, setVideo] = useState(null)
+    const [video, setVideo] = useState({
+        videoUrl:"https://youtu.be/W6NZfCO5SIk?feature=shared"
+    })
     const [showDetails, setShowDetails] = useState([]);
     const [loading, setLoading] = useState(false)
     const totalSections = course?.section?.reduce((acc, section) => {
@@ -59,16 +61,16 @@ const SectionVideo = () => {
                     >
                 </iframe>
             </div>
-            <div className=' w-full md:w-[40%] h-[50%] p-6 '>
-                <div className=' flex gap-2 w-full flex-col h-full  overflow-y-scroll  '>
-                    <div className=' flex justify-between border-[1px] border-gray-500 p-2'>
-                        <span className=' text-xl font-bold'>Curriculum for this course :</span>
-                        <span>{totalSections} Lessons</span>
+            <div className=' w-full md:w-[40%] h-[50%] md:h-full p-6 '>
+                <div className=' flex gap-2 w-full flex-col h-full md:h-[90%]  overflow-y-scroll   '>
+                    <div className=' flex justify-between border-[1px]  border-gray-500 p-2'>
+                        <span className='text-sm md:text-xl  font-bold'>Curriculum for this course :</span>
+                        <span className=' text-sm md:text-base'>{totalSections} Lessons</span>
                     </div>
                     {
                         course?.section?.map((sub, index) => (
                             <div className=' flex flex-col gap-2 cursor-pointer' key={index}>
-                                <div className='flex justify-between border-[1px] font-bold border-gray-400 p-2 shadow-md' onClick={() => toggleDetails(index)}>
+                                <div className='flex justify-between border-[1px] text-xs md:text-base font-bold border-gray-400 p-2 shadow-md' onClick={() => toggleDetails(index)}>
                                     <span className=' flex gap-1 items-center'> {!showDetails[index] ? <LuPlus /> : <HiOutlineMinusSm />} {sub?.sectionName
                                     }</span>
                                     <span>{sub?.subSection?.length} Lessons</span>
@@ -89,7 +91,7 @@ const SectionVideo = () => {
 
                     }
                     <button onClick={() => { navigate(`/course/section/quiz/${id}`) }} className=' flex justify-center w-40 border-[1px] border-gray-500 p-2'>
-                        <span className=' text-xl font-bold'>start Quiz</span>
+                        <span className=' text-sm md:text-xl font-bold'>start Quiz</span>
                     </button>
                 </div>
             </div>
