@@ -90,7 +90,7 @@ const SectionVideo = () => {
                         ))
 
                     }
-                    <button onClick={() => { navigate(`/course/section/quiz/${id}`) }} className=' flex justify-center w-40 border-[1px] border-gray-500 p-2'>
+                    <button onClick={() => { navigate(`/course/section/quiz/${id}`) }} className=' flex  justify-center w-[160px] border-[1px] border-gray-500 p-2'>
                         <span className=' text-sm md:text-xl font-bold'>start Quiz</span>
                     </button>
                 </div>
